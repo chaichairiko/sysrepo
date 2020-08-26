@@ -2126,7 +2126,7 @@ sr_diff_find_oper(struct lyd_node *diff, int *op_own, pid_t *pid, void **conn_pt
         return 0;
     }
 
-    SR_LOG_WRNMSG("********************* op_own=%d *****************", op_own);
+    SR_LOG_WRN("********************* op_own=%d *****************", op_own);
     for (parent = diff; parent; parent = parent->parent) {
         for (attr = parent->attr; attr; attr = attr->next) {
             if (!op && !strcmp(attr->name, "operation")) {

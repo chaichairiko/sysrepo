@@ -20,6 +20,7 @@
  * limitations under the License.
  */
 #include "common.h"
+#include "log.h"
 
 #include <pthread.h>
 #include <assert.h>

@@ -2126,12 +2126,15 @@ sr_diff_find_oper(struct lyd_node *diff, int *op_own, pid_t *pid, void **conn_pt
         return 0;
     }
 
-    SR_LOG_WRN("********************* op_own=%d *****************", op_own);
     for (parent = diff; parent; parent = parent->parent) {
         for (attr = parent->attr; attr; attr = attr->next) {
             if (!op && !strcmp(attr->name, "operation")) {
+                SR_LOG_WRN("********************* ATTR_NAME=%s *****************", attr->name);
                 if (!strcmp(attr->annotation->module->name, SR_YANG_MOD) || !strcmp(attr->annotation->module->name, "ietf-netconf")) {
+                    SR_LOG_WRN("********************* MODULE_NAME=%s *****************", attr->annotation->module->name);
                     op = sr_edit_str2op(attr->value_str);
+                    SR_LOG_WRN("********************* OP_STR=%s *****************", attr->value_str);
+                    SR_LOG_WRN("********************* OP_INT=%d *****************", op);
                     if (op_own && (parent == diff)) {
                         *op_own = 1;
                     }
